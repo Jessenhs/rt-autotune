@@ -4,10 +4,20 @@ version = "0.1.0"
 edition = "2021"
 
 [lib]
-crate-type = ["cdylib"]
+crate-type = ["cdylib", "lib"]
+
+[[bin]]
+name = "rt-autotune-standalone"
+path = "src/main.rs"
+required-features = ["standalone"]
+
+[features]
+default = []
+standalone = ["nih_plug/standalone"]
 
 [dependencies]
-nih_plug = { git = "https://github.com/robbert-vdh/nih-plug", features = ["assert_process_allocs"] }
+nih_plug = { git = "https://github.com/robbert-vdh/nih-plug" }
+nih_plug_egui = { git = "https://github.com/robbert-vdh/nih-plug" }
 rustfft = "6"
 
 [workspace]
